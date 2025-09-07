@@ -67,7 +67,27 @@ height: 1em;
 vertical-align: -0.125em;
 }
 
+.fa-chevron-left {
+  color: #6030b1;
+  font-size: 20px;
+}
 
+.fa-chevron-right {
+  color: #6030b1;
+  font-size: 20px;
+} 
+
+.fa-chevron-left:hover {
+    color: #ff328f;
+}
+
+.fa-chevron-right:hover {
+    color: #ff328f;
+}
+
+.page__list {
+    margin-left: 8px;
+}
 
 /* NAVIGATION */
 
@@ -337,7 +357,7 @@ font-size: 30px;
     width: 100%;
     max-width: 1300px;
     margin: 0 auto;
-    padding: 30px;
+    padding: 30px 90px;
     display: flex;
     flex-wrap: wrap;
 }

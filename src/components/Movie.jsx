@@ -1,5 +1,8 @@
 import React from 'react'
 
+// make the movie html dynamic and get the api data on here so it can show on the home page
+
+
 const Movie = () => {
   return (
     <div className='movies'>

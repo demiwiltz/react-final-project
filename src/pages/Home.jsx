@@ -4,6 +4,9 @@ import axios from "axios";
 import { render } from "@testing-library/react";
 import Movie from "../components/Movie";
 
+// 1. Get the functionality to work on the search tab
+// 2. Get the functionality to work on the page buttons
+
 const Home = () => {
   function openMenu() {
     document.body.classList += " menu--open";
@@ -14,17 +17,20 @@ const Home = () => {
   }
 
   async function renderMovies() {
-    const response = axios.get(
-      "https://www.omdbapi.com/?apikey=79bfa222&s=fast"
-    );
-    console.log(response);
+    const response = await axios.get("https://www.omdbapi.com/?apikey=79bfa222&s=fast");
+    const data = response.data.Search 
+    console.log(data)
   }
 
   renderMovies();
 
-  // function searchChange(event) {
-  //   renderMovies(event.target.value)
-  // }
+function arrowClick() {
+ "https://www.omdbapi.com/?apikey=79bfa222&s=fast"
+}
+
+
+
+
 
   return (
     <>
@@ -93,7 +99,7 @@ const Home = () => {
                   // onChange={() => searchChange(event)}
                   placeholder="Search"
                 />
-                <div className="search-wrapper">
+                <div className="search-wrapper" onClick={renderMovies}>
                   <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" />
                 </div>
               </div>
@@ -110,14 +116,14 @@ const Home = () => {
             <div className="container">
               <div className="pages">Pages</div>
               <div className="button__container">
-                <button>
+                <i onClick={arrowClick}>
                   <FontAwesomeIcon icon="fa-solid fa-chevron-left" />
-                </button>
-                <button>
+                </i>
+                <i onClick={arrowClick}>
                   <FontAwesomeIcon icon="fa-solid fa-chevron-right" />
-                </button>
+                </i>
               </div>
-                 <div>page 1 of 3</div>
+                 <div className="page__list">page 1 of 3</div>
             </div>
           </div>
 
