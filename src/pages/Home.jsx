@@ -1,72 +1,133 @@
-import React from 'react'
+import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import axios from "axios";
+import { render } from "@testing-library/react";
+import Movie from "../components/Movie";
 
 const Home = () => {
+  function openMenu() {
+    document.body.classList += " menu--open";
+  }
+
+  function closeMenu() {
+    document.body.classList.remove("menu--open");
+  }
+
+  async function renderMovies() {
+    const response = axios.get(
+      "https://www.omdbapi.com/?apikey=79bfa222&s=fast"
+    );
+    console.log(response);
+  }
+
+  renderMovies();
+
+  // function searchChange(event) {
+  //   renderMovies(event.target.value)
+  // }
+
   return (
-    <nav>
-      <div class="overlay">
-        <div class="nav__row">
-          <div class="nav-bar">
-            <div class="nav__logo">
-              <img
-                data-v-390ceb07=""
-                src="https://images.unsplash.com/photo-1649011402576-a7bc591b8f85?q=80&w=2960&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                alt="blinker logo"
-                class="logo"
-              />
-              <div>
-                <h1>Panda</h1>
-                <h1>Productions</h1>
+    <>
+      <nav>
+        <div className="overlay">
+          <div className="nav__row">
+            <div className="nav-bar">
+              <div className="nav__logo">
+                <img
+                  data-v-390ceb07=""
+                  src="https://images.unsplash.com/photo-1649011402576-a7bc591b8f85?q=80&w=2960&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  alt="blinker logo"
+                  className="logo"
+                />
+                <div>
+                  <h1>Panda</h1>
+                  <h1>Productions</h1>
+                </div>
               </div>
-            </div>
-            {/* <!-- BTN SHOWS --> */}
-            <ul class="nav__links">
-              <li class="nav__link">
-                <a href="#">Home</a>
-              </li>
-              <li class="nav__link">
-                <a href="#movies">Movies</a>
-              </li>
-              <li class="nav__link">
-                <a href="#tvshows">Tv Shows</a>
-              </li>
-            </ul>
-            <button class="btn__menu" onclick="openMenu()">
-              <i class="fas fa-bars"></i>
-            </button>
-            <div class="menu__backdrop">
-              <button class="btn__menu btn__menu--close" onclick="closeMenu()">
-                <i class="fas fa-times"></i>
-              </button>
-              <ul class="menu__links">
-                <li class="menu__list">
-                  <a href="#" class="menu__link">Home</a>
+              {/* <!-- BTN SHOWS --> */}
+              <ul className="nav__links">
+                <li className="nav__link">
+                  <a href="#">Home</a>
                 </li>
-                <li class="menu__list">
-                  <a href="#" class="menu__link no-cursor">Movies</a>
+                <li className="nav__link">
+                  <a href="#movies">Movies</a>
                 </li>
-                <li class="menu__list">
-                  <a href="#" class="menu__link no-cursor">Tv Shows</a>
+                <li className="nav__link">
+                  <a href="#tvshows">Tv Shows</a>
                 </li>
               </ul>
+              <button className="btn__menu" onClick={openMenu}>
+                <FontAwesomeIcon icon="fas fa-bars" />
+              </button>
+              <div className="menu__backdrop">
+                <button
+                  className="btn__menu btn__menu--close"
+                  onClick={closeMenu}
+                >
+                  <FontAwesomeIcon icon="fas fa-times" />
+                </button>
+                <ul className="menu__links">
+                  <li className="menu__list">
+                    <a href="#" className="menu__link">
+                      Home
+                    </a>
+                  </li>
+                  <li className="menu__list">
+                    <a href="#" className="menu__link no-cursor">
+                      Movies
+                    </a>
+                  </li>
+                  <li className="menu__list">
+                    <a href="#" className="menu__link no-cursor">
+                      Tv Shows
+                    </a>
+                  </li>
+                </ul>
+              </div>
             </div>
-          </div>
-          <div class="content-wrapper">
-            <h2>Browse our movies</h2>
-            <div class="input-wrap">
-              <input
-                type="text"
-                onchange="searchChange(event)"
-                placeholder="Search"
-              />
-              <div class="search-wrapper">
-                <i class="fa-solid fa-magnifying-glass"></i>
+            <div className="content-wrapper">
+              <h2>Browse our movies</h2>
+              <div className="input-wrap">
+                <input
+                  type="text"
+                  // onChange={() => searchChange(event)}
+                  placeholder="Search"
+                />
+                <div className="search-wrapper">
+                  <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" />
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </nav>
-    //  <div class="progress-bar"></div>
-  )
-}
+        <div className="progress-bar"></div>
+      </nav>
+
+      <main>
+        <section id="search">
+          <div className="main-wrapper">
+            <h3 className="search-info">Search Results:</h3>
+            <div className="container">
+              <div className="pages">Pages</div>
+              <div className="button__container">
+                <button>
+                  <FontAwesomeIcon icon="fa-solid fa-chevron-left" />
+                </button>
+                <button>
+                  <FontAwesomeIcon icon="fa-solid fa-chevron-right" />
+                </button>
+              </div>
+                 <div>page 1 of 3</div>
+            </div>
+          </div>
+
+          <div className="movies movies__loading">
+            <i className="fas fa-spinner movies__loading--spinner"></i>
+          </div>
+          <Movie />
+        </section>
+      </main>
+    </>
+  );
+};
 export default Home;
