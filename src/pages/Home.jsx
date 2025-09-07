@@ -2,7 +2,6 @@ import React from 'react'
 
 const Home = () => {
   return (
-<>
     <nav>
       <div class="overlay">
         <div class="nav__row">
@@ -51,7 +50,23 @@ const Home = () => {
               </ul>
             </div>
           </div>
-</>
+          <div class="content-wrapper">
+            <h2>Browse our movies</h2>
+            <div class="input-wrap">
+              <input
+                type="text"
+                onchange="searchChange(event)"
+                placeholder="Search"
+              />
+              <div class="search-wrapper">
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    //  <div class="progress-bar"></div>
   )
 }
 export default Home;
