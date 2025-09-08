@@ -2,6 +2,7 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import { render } from "@testing-library/react";
+import { movies } from "../data";
 import Movie from "../components/Movie";
 
 // 1. Get the functionality to work on the search tab
@@ -12,25 +13,25 @@ const Home = () => {
     document.body.classList += " menu--open";
   }
 
+  console.log(movies);
+
   function closeMenu() {
     document.body.classList.remove("menu--open");
   }
 
   async function renderMovies() {
-    const response = await axios.get("https://www.omdbapi.com/?apikey=79bfa222&s=fast");
-    const data = response.data.Search 
-    console.log(data)
+    const response = await axios.get(
+      "https://www.omdbapi.com/?apikey=79bfa222&s=fast"
+    );
+    const data = response.data.Search;
+    console.log(data);
   }
 
   renderMovies();
 
-function arrowClick() {
- "https://www.omdbapi.com/?apikey=79bfa222&s=fast"
-}
-
-
-
-
+  function arrowClick() {
+    "https://www.omdbapi.com/?apikey=79bfa222&s=fast";
+  }
 
   return (
     <>
@@ -123,14 +124,19 @@ function arrowClick() {
                   <FontAwesomeIcon icon="fa-solid fa-chevron-right" />
                 </i>
               </div>
-                 <div className="page__list">page 1 of 3</div>
+              <div className="page__list">page 1 of 3</div>
             </div>
           </div>
 
           <div className="movies movies__loading">
             <i className="fas fa-spinner movies__loading--spinner"></i>
           </div>
-          <Movie />
+         <Movie />
+         <Movie />
+         <Movie />
+         <Movie />
+         <Movie />
+         <Movie />
         </section>
       </main>
     </>
