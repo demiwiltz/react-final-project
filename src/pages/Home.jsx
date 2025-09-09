@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import { render } from "@testing-library/react";
@@ -13,21 +13,42 @@ const Home = () => {
     document.body.classList += " menu--open";
   }
 
-  console.log(movies);
 
   function closeMenu() {
     document.body.classList.remove("menu--open");
   }
 
-  async function renderMovies() {
-    const response = await axios.get(
-      "https://www.omdbapi.com/?apikey=79bfa222&s=fast"
-    );
-    const data = response.data.Search;
-    console.log(data);
+  const [movies, setMovies] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("fast");
+
+  async function fetchMovies(query) {
+    setLoading(true);
+    try {
+      const response = await axios.get(
+        `https://www.omdbapi.com/?apikey=79bfa222&s=${query}`
+      );
+      setMovies(response.data.Search || []);
+    } catch (error) {
+      console.error("Error fetching movies:", error);
+      setMovies([]);
+    } finally {
+      setLoading(false);
+    }
   }
 
-  renderMovies();
+  useEffect(() => {
+    fetchMovies(searchTerm);
+  }, []);
+
+  const handleSearch = () => {
+    fetchMovies(searchTerm);
+  };
+  // const response = await axios.get(
+  //   "https://www.omdbapi.com/?apikey=79bfa222&s=fast"
+  // );
+  // const data = response.data.Search;
+  // console.log(data);
 
   function arrowClick() {
     "https://www.omdbapi.com/?apikey=79bfa222&s=fast";
@@ -97,10 +118,11 @@ const Home = () => {
               <div className="input-wrap">
                 <input
                   type="text"
-                  // onChange={() => searchChange(event)}
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
                   placeholder="Search"
                 />
-                <div className="search-wrapper" onClick={renderMovies}>
+                <div className="search-wrapper" onClick={handleSearch}>
                   <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" />
                 </div>
               </div>
@@ -128,15 +150,18 @@ const Home = () => {
             </div>
           </div>
 
-          <div className="movies movies__loading">
+          {/* <div className="movies movies__loading">
             <i className="fas fa-spinner movies__loading--spinner"></i>
+          </div> */}
+          <div className="movies">
+            {loading ? (
+              <i className="fas fa-spinner movies__loading--spinner"></i>
+            ) : movies.length > 0 ? (
+              movies.map((movie) => <Movie key={movie.imdbID} movie={movie} />)
+            ) : (
+              <p>No movies found</p>
+            )}
           </div>
-         <Movie />
-         <Movie />
-         <Movie />
-         <Movie />
-         <Movie />
-         <Movie />
         </section>
       </main>
     </>
