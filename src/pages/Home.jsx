@@ -13,10 +13,23 @@ const Home = () => {
     document.body.classList += " menu--open";
   }
 
-
   function closeMenu() {
     document.body.classList.remove("menu--open");
   }
+
+  const EnterKeyExample = () => {
+    const [inputValue, setInputValue] = useState("");
+
+    const handleInputChange = (event) => {
+      setInputValue(event.target.value);
+    };
+    const handleKeyDown = (event) => {
+      if (event.key === "Enter") {
+        console.log("Entered value:", inputValue);
+        setInputValue("");
+      }
+    };
+  };
 
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -120,6 +133,7 @@ const Home = () => {
                   type="text"
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
+                  onKeyDown={handleKeyDown}
                   placeholder="Search"
                 />
                 <div className="search-wrapper" onClick={handleSearch}>

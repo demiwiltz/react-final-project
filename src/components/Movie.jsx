@@ -6,7 +6,7 @@ import { movies } from "../data";
 
 const Movie = ({ movie }) => {
   return (
-    <div className="movies">
+    <div className="">
       <div className="movie">
         <figure>
           <img
