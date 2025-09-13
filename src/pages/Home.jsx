@@ -17,28 +17,26 @@ const Home = () => {
     document.body.classList.remove("menu--open");
   }
 
-  function Search() {
-    const [query, setQuery] = useState("");
-    const [movies, setMovies] = useState([]);
-    const [loading, setLoading] = useState(false);
+  const [query, setQuery] = useState("");
+  const [movies, setMovies] = useState([]);
+  const [loading, setLoading] = useState(false);
 
-    const getMovies = async () => {
-      if (!query) return;
-      setLoading(true);
+  const getMovies = async () => {
+    if (!query) return;
+    setLoading(true);
 
-      try {
-        const response = await axios.get(
-          `https://www.omdbapi.com/?apikey=79bfa222&s=${query}`
-        );
-        setMovies(response.data.Search || []);
-      } catch (error) {
-        console.error("Error fetching movies:", error);
-        setMovies([]);
-      } finally {
-        setLoading(false);
-      }
-    };
-  }
+    try {
+      const response = await axios.get(
+        `https://www.omdbapi.com/?apikey=79bfa222&s=${query}`
+      );
+      setMovies(response.data.Search || []);
+    } catch (error) {
+      console.error("Error fetching movies:", error);
+      setMovies([]);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   // const [searchTerm, setSearchTerm] = useState("fast");
 
@@ -70,9 +68,9 @@ const Home = () => {
   // const data = response.data.Search;
   // console.log(data);
 
-  // function arrowClick() {
-  //   "https://www.omdbapi.com/?apikey=79bfa222&s=fast";
-  // }
+  function arrowClick() {
+    "https://www.omdbapi.com/?apikey=79bfa222&s=fast";
+  }
 
   return (
     <>
@@ -101,7 +99,7 @@ const Home = () => {
                   <a href="#movies">Movies</a>
                 </li>
                 <li className="nav__link">
-                  <a href="#tvshows">Tv Shows</a>
+                  <a href="#tvshows">Contact</a>
                 </li>
               </ul>
               <button className="btn__menu" onClick={openMenu}>
@@ -127,7 +125,7 @@ const Home = () => {
                   </li>
                   <li className="menu__list">
                     <a href="#" className="menu__link no-cursor">
-                      Tv Shows
+                      Contact
                     </a>
                   </li>
                 </ul>
@@ -161,7 +159,7 @@ const Home = () => {
       <main>
         <section id="search">
           <div className="main-wrapper">
-            <h3 className="search-info">Search Results:</h3>
+            <h3 className="search-info">Search Results: {loading ? "Loading..." : getMovies}</h3>
             <div className="container">
               <div className="pages">Pages</div>
               <div className="button__container">

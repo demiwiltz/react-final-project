@@ -15,7 +15,7 @@ const Movie = ({ movie }) => {
             alt=""
           />
         </figure>
-        <h4 className="movie__title">{movie.title}</h4>
+        <h4 className="movie__title">{movie.Title}</h4>
       </div>
     </div>
   );
