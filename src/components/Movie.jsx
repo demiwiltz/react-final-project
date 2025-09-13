@@ -3,7 +3,7 @@ import { movies } from "../data";
 import { Link } from "react-router-dom";
 
 // make the movie html dynamic and get the api data on here so it can show on the home page
-// dynamic routes vid 5:41
+// filtering vid 5:34
 
 const Movie = ({ movie }) => {
   return (
@@ -21,9 +21,9 @@ const Movie = ({ movie }) => {
               alt=""
             />
           </figure>
-        <h4 className="movie__title">{movie.Title}</h4>
-        <h5 className="movie__title">{movie.year}</h5>
-          </Link>
+            <h4 className="movie__title">{movie.Title}</h4>
+            <h5 className="movie__year">{movie.Year}</h5>
+        </Link>
       </div>
     </div>
   );
