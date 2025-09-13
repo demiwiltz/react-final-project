@@ -10,7 +10,7 @@ function App() {
     <div className="App">
     <Routes>
       <Route path='/' element={<Home />}></Route>
-      <Route path='/yourmovies/1' render={() => <MovieInfo movie={movies} />}></Route>
+      <Route path='/movies/:id' render={() => <MovieInfo movie={movies} />}></Route>
     </Routes>
     </div>
     </Router>

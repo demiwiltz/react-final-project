@@ -370,6 +370,11 @@ font-size: 30px;
 
 .movie__title {
     margin-top: 20px;
+    color: #242424;
+}
+
+.movie__title:hover {
+    text-decoration: underline;
 }
 
 .movies__loading {

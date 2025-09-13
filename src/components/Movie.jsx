@@ -9,7 +9,7 @@ const Movie = ({ movie }) => {
   return (
     <div className="">
       <div className="movie">
-        <Link to="/yourmovies/1">
+        <Link to="/movies/:id">
           <figure>
             <img
               className="movie__img"
@@ -21,8 +21,9 @@ const Movie = ({ movie }) => {
               alt=""
             />
           </figure>
-        </Link>
         <h4 className="movie__title">{movie.Title}</h4>
+        <h5 className="movie__title">{movie.year}</h5>
+          </Link>
       </div>
     </div>
   );

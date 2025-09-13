@@ -21,6 +21,19 @@ const Home = () => {
   const [query, setQuery] = useState("");
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [filter, setFilter] = useState();
+
+
+function filterMovies(filter) {
+  console.log(filter)
+  if (filter === 'oldest') {
+   setFilter(movies.slice().sort((a, b) => a.year - b.year))
+  }
+
+}
+
+
+
 
   const getMovies = async () => {
     if (!query) return;
@@ -160,7 +173,12 @@ const Home = () => {
           <div className="main-wrapper">
             <h3 className="search-info">Search Results: {loading ? "Loading..." : query}</h3>
             <div className="container">
-              <div className="pages">Pages</div>
+              <select id="filter" defaultValue="DEFAULT" onChange={(event) => filterMovies(event.target.value)}>
+                <option value="DEFAULT" disabled>Sort by Year</option>
+                <option value="oldest">Old to New</option>
+                <option value="newest">New to Old</option>               
+              </select>
+              {/* <div className="pages">Pages</div>
               <div className="button__container">
                 <i>
                   <FontAwesomeIcon icon="fa-solid fa-chevron-left" />
@@ -169,7 +187,7 @@ const Home = () => {
                   <FontAwesomeIcon icon="fa-solid fa-chevron-right" />
                 </i>
               </div>
-              <div className="page__list">page 1 of 3</div>
+              <div className="page__list">page 1 of 3</div> */}
             </div>
           </div>
 
