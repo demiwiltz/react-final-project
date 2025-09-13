@@ -4,6 +4,7 @@ import axios from "axios";
 import { render } from "@testing-library/react";
 import { movies } from "../data";
 import Movie from "../components/Movie";
+import { Link } from "react-router-dom";
 
 // 1. Get the functionality to work on the search tab
 // 2. Get the functionality to work on the page buttons
@@ -68,9 +69,7 @@ const Home = () => {
   // const data = response.data.Search;
   // console.log(data);
 
-  function arrowClick() {
-    "https://www.omdbapi.com/?apikey=79bfa222&s=fast";
-  }
+ 
 
   return (
     <>
@@ -96,10 +95,10 @@ const Home = () => {
                   <a href="#">Home</a>
                 </li>
                 <li className="nav__link">
-                  <a href="#movies">Movies</a>
+                  <a href="#yourmovie">Your Movie</a>
                 </li>
                 <li className="nav__link">
-                  <a href="#tvshows">Contact</a>
+                  <a href="#contact">Contact</a>
                 </li>
               </ul>
               <button className="btn__menu" onClick={openMenu}>
@@ -114,19 +113,19 @@ const Home = () => {
                 </button>
                 <ul className="menu__links">
                   <li className="menu__list">
-                    <a href="#" className="menu__link">
+                    <Link to="#" className="menu__link">
                       Home
-                    </a>
+                    </Link>
                   </li>
                   <li className="menu__list">
-                    <a href="#" className="menu__link no-cursor">
-                      Movies
-                    </a>
+                    <Link to="#" className="menu__link no-cursor">
+                      Your Movie
+                    </Link>
                   </li>
                   <li className="menu__list">
-                    <a href="#" className="menu__link no-cursor">
+                    <Link to="#" className="menu__link no-cursor">
                       Contact
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </div>
@@ -159,15 +158,14 @@ const Home = () => {
       <main>
         <section id="search">
           <div className="main-wrapper">
-            <h3 className="search-info">Search Results: {loading ? "Loading..." : (movies.length > 0 ? `${movies.Title}` : "No results found")}</h3>
-{/* loading ? "Loading..." : movies.Title */}
+            <h3 className="search-info">Search Results: {loading ? "Loading..." : query}</h3>
             <div className="container">
               <div className="pages">Pages</div>
               <div className="button__container">
-                <i onClick={arrowClick}>
+                <i>
                   <FontAwesomeIcon icon="fa-solid fa-chevron-left" />
                 </i>
-                <i onClick={arrowClick}>
+                <i>
                   <FontAwesomeIcon icon="fa-solid fa-chevron-right" />
                 </i>
               </div>
