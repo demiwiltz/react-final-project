@@ -159,7 +159,8 @@ const Home = () => {
       <main>
         <section id="search">
           <div className="main-wrapper">
-            <h3 className="search-info">Search Results: {loading ? "Loading..." : movies.Title}</h3>
+            <h3 className="search-info">Search Results: {loading ? "Loading..." : (movies.length > 0 ? `${movies.Title}` : "No results found")}</h3>
+{/* loading ? "Loading..." : movies.Title */}
             <div className="container">
               <div className="pages">Pages</div>
               <div className="button__container">
