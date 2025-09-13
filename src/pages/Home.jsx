@@ -17,55 +17,62 @@ const Home = () => {
     document.body.classList.remove("menu--open");
   }
 
-  const EnterKeyExample = () => {
-    const [inputValue, setInputValue] = useState("");
+  function Search() {
+    const [query, setQuery] = useState("");
+    const [movies, setMovies] = useState([]);
+    const [loading, setLoading] = useState(false);
 
-    const handleInputChange = (event) => {
-      setInputValue(event.target.value);
-    };
-    const handleKeyDown = (event) => {
-      if (event.key === "Enter") {
-        console.log("Entered value:", inputValue);
-        setInputValue("");
+    const getMovies = async () => {
+      if (!query) return;
+      setLoading(true);
+
+      try {
+        const response = await axios.get(
+          `https://www.omdbapi.com/?apikey=79bfa222&s=${query}`
+        );
+        setMovies(response.data.Search || []);
+      } catch (error) {
+        console.error("Error fetching movies:", error);
+        setMovies([]);
+      } finally {
+        setLoading(false);
       }
     };
-  };
-
-  const [movies, setMovies] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [searchTerm, setSearchTerm] = useState("fast");
-
-  async function fetchMovies(query) {
-    setLoading(true);
-    try {
-      const response = await axios.get(
-        `https://www.omdbapi.com/?apikey=79bfa222&s=${query}`
-      );
-      setMovies(response.data.Search || []);
-    } catch (error) {
-      console.error("Error fetching movies:", error);
-      setMovies([]);
-    } finally {
-      setLoading(false);
-    }
   }
 
-  useEffect(() => {
-    fetchMovies(searchTerm);
-  }, []);
+  // const [searchTerm, setSearchTerm] = useState("fast");
 
-  const handleSearch = () => {
-    fetchMovies(searchTerm);
-  };
+  // async function fetchMovies(query) {
+  //   setLoading(true);
+  //   try {
+  //     const response = await axios.get(
+  //       `https://www.omdbapi.com/?apikey=79bfa222&s=${query}`
+  //     );
+  //     setMovies(response.data.Search || []);
+  //   } catch (error) {
+  //     console.error("Error fetching movies:", error);
+  //     setMovies([]);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // }
+
+  // useEffect(() => {
+  //   fetchMovies(searchTerm);
+  // }, []);
+
+  // const handleSearch = () => {
+  //   fetchMovies(searchTerm);
+  // };
   // const response = await axios.get(
   //   "https://www.omdbapi.com/?apikey=79bfa222&s=fast"
   // );
   // const data = response.data.Search;
   // console.log(data);
 
-  function arrowClick() {
-    "https://www.omdbapi.com/?apikey=79bfa222&s=fast";
-  }
+  // function arrowClick() {
+  //   "https://www.omdbapi.com/?apikey=79bfa222&s=fast";
+  // }
 
   return (
     <>
@@ -131,12 +138,17 @@ const Home = () => {
               <div className="input-wrap">
                 <input
                   type="text"
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  onKeyDown={handleKeyDown}
+                  value={query}
+                  onChange={(e) => setQuery(e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                      getMovies();
+                    }
+                  }}
                   placeholder="Search"
                 />
-                <div className="search-wrapper" onClick={handleSearch}>
+                <div className="search-wrapper" onClick={() => getMovies()}>
+                  {/* handleSearch onClick ^^^^^^^^*/}
                   <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" />
                 </div>
               </div>
