@@ -9,8 +9,8 @@ function App() {
     <Router>
     <div className="App">
     <Routes>
-      <Route path='/' element={<Home />}></Route>
-      <Route path='/movies/:id' render={() => <MovieInfo movie={movies} />}></Route>
+      <Route path='/' element={<Home movie={movies} />} />
+      <Route path='/movies/:id' render={() => <MovieInfo movie={movies} />} />
     </Routes>
     </div>
     </Router>

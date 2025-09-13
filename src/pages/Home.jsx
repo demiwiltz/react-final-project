@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 // 1. Get the functionality to work on the search tab
 // 2. Get the functionality to work on the page buttons
 
-const Home = ({ movies: initialMovies }) => {
+const Home = ({ }) => {
   function openMenu() {
     document.body.classList += " menu--open";
   }
@@ -21,13 +21,14 @@ const Home = ({ movies: initialMovies }) => {
   const [query, setQuery] = useState("");
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [filter, setFilter] = useState(initialMovies);
+  const [filter, setFilter] = useState();
+  const [filteredMovies, setFilteredMovies] = useState();
 
-
+// FIX THE FILTER!!!!!
 function filterMovies(filter) {
   console.log(filter)
   if (filter === 'oldest') {
-   setFilter(movies.slice().sort((a, b) => a.year - b.year))
+   setFilter(movies.slice().sort((a, b) => a.Year - b.Year))
   }
 
 }
