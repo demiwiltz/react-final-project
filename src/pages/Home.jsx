@@ -159,7 +159,7 @@ const Home = () => {
       <main>
         <section id="search">
           <div className="main-wrapper">
-            <h3 className="search-info">Search Results: {loading ? "Loading..." : getMovies}</h3>
+            <h3 className="search-info">Search Results: {loading ? "Loading..." : movies.Title}</h3>
             <div className="container">
               <div className="pages">Pages</div>
               <div className="button__container">
@@ -181,7 +181,7 @@ const Home = () => {
             {loading ? (
               <i className="fas fa-spinner movies__loading--spinner"></i>
             ) : movies.length > 0 ? (
-              movies.map((movie) => <Movie key={movie.imdbID} movie={movie} />)
+              movies.slice(0, 6).map((movie) => <Movie key={movie.imdbID} movie={movie} />)
             ) : (
               <p>No movies found</p>
             )}

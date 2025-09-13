@@ -348,7 +348,7 @@ font-size: 30px;
 }
 
 .movie {
-   width: calc(100% / 3);
+   /* width: calc(100% / 3); */
    padding: 16px;
    display: flex;
    flex-direction: column;
