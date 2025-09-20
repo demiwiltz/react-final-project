@@ -13,12 +13,24 @@ a {
 }
 
 body {
-    /* background-image: url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/5298bac0-b8bf-4c80-af67-725c1272dbb0/dbse65i-93e9ce8a-2c76-43f3-ad5a-dffc39877ea5.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzUyOThiYWMwLWI4YmYtNGM4MC1hZjY3LTcyNWMxMjcyZGJiMFwvZGJzZTY1aS05M2U5Y2U4YS0yYzc2LTQzZjMtYWQ1YS1kZmZjMzk4NzdlYTUuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.ecWdcOwuv6opCTZkZRlHfH3O3rzGCWgyDn_iU8EGjQM'); */
-
+    margin: 0; /* Remove default margin */
+    height: 100vh; /* Full height of the viewport */
+    background-image: url('./assets/awol-vision-projector-Uff2iGkpNs4-unsplash.jpg');
+    background-size: cover; /* Cover the entire area */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Prevent repeating the image */ 
 }
 
 li {
     list-style-type: none;
+}
+
+h4 {
+  letter-spacing: .1em;
+    max-width: 1000px;
+    font-weight: 500;
+    font-size: 20px;
+    color: #fff;   
 }
 
 h1 {
@@ -304,6 +316,42 @@ font-size: 30px;
 .menu__list {
     padding: 20px 0;
 }
+
+
+/* HOME */
+
+.header__row {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.header__title {
+    /* color: #242424; */
+    font-weight: 500;
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.header__img {
+width: 100%;
+height: auto;
+object-fit: cover;
+}
+
+.header__img--container {
+/* height: 100vh; */
+overflow: hidden;
+}
+
+.header__title, 
+
+
+
+
 
 
 
