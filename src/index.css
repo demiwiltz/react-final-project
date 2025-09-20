@@ -357,10 +357,12 @@ font-size: 30px;
 }
 
 .movie {
-   /* width: calc(100% / 3); */
+   width: calc(100% / 3);
    padding: 16px;
+   /* flex: 1 1 calc(25% - 16px);  */
+   /* box-sizing: border-box; */
    display: flex;
-   flex-direction: column;
+   /* flex-direction: column; */
 }
 
 .movies {
@@ -370,6 +372,7 @@ font-size: 30px;
     padding: 30px 90px;
     display: flex;
     flex-wrap: wrap;
+    gap: 16px;
 }
 
 .movie__title {
