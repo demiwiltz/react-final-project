@@ -5,7 +5,7 @@ import { render } from "@testing-library/react";
 import { movies } from "../data";
 import Movie from "../components/Movie";
 import { Link } from "react-router-dom";
-import MovieImg from '../assets/awol-vision-projector-Uff2iGkpNs4-unsplash.jpg'
+import MovieImg from "../assets/awol-vision-projector-Uff2iGkpNs4-unsplash.jpg";
 
 const Home = ({}) => {
   const [query, setQuery] = useState("");
@@ -67,8 +67,10 @@ const Home = ({}) => {
             <img src={MovieImg} className="header__img" alt="" />
           </figure>
           <div className="header__content">
-            <h1 className="header__title">Stream all of your favorite movies</h1>
-            <h1 className="header__title title--one">in one platform</h1>
+              <h1 className="header__title">
+                Stream all of your favorite movies
+              </h1>
+              <h1 className="header__title title--one">in one platform</h1>
             <div className="input-wrap">
               <input
                 type="text"

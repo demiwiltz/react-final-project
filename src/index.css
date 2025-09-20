@@ -342,6 +342,15 @@ height: auto;
 object-fit: cover;
 }
 
+.header__content {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+
 .header__img--container {
 /* height: 100vh; */
 overflow: hidden;
