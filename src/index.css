@@ -345,9 +345,11 @@ object-fit: cover;
 .header__content {
     position: absolute;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
+    padding-bottom: 50px;
 }
 
 

@@ -7,6 +7,9 @@ import Movie from "../components/Movie";
 import { Link } from "react-router-dom";
 import MovieImg from "../assets/awol-vision-projector-Uff2iGkpNs4-unsplash.jpg";
 
+// 1. get the search tab to work fetching the movies data by making it go to the movies page when you search for a movie
+
+
 const Home = ({}) => {
   const [query, setQuery] = useState("");
   const [movies, setMovies] = useState([]);
@@ -14,7 +17,8 @@ const Home = ({}) => {
 
   const getMovies = async () => {
     if (!query) return;
-    setLoading(true);
+    console.log(query)
+    // setLoading(true);
 
     try {
       const response = await axios.get(
