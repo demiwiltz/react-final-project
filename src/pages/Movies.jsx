@@ -106,13 +106,13 @@ const Movies = () => {
               {/* <!-- BTN SHOWS --> */}
               <ul className="nav__links">
                 <li className="nav__link">
-                  <a href="#">Home</a>
+                  <Link to="/">Home</Link>
                 </li>
                 <li className="nav__link">
-                  <a href="#yourmovie">Your Movie</a>
+                  <Link to="/movies">Find your movies</Link>
                 </li>
                 <li className="nav__link">
-                  <a href="#contact">Contact</a>
+                  <Link to="/contact">Contact</Link>
                 </li>
               </ul>
               <button className="btn__menu" onClick={openMenu}>
@@ -127,17 +127,17 @@ const Movies = () => {
                 </button>
                 <ul className="menu__links">
                   <li className="menu__list">
-                    <Link to="#" className="menu__link">
+                    <Link to="/" className="menu__link">
                       Home
                     </Link>
                   </li>
                   <li className="menu__list">
-                    <Link to="#" className="menu__link no-cursor">
-                      Your Movie
+                    <Link to="/movies" className="menu__link no-cursor">
+                      Find your movies
                     </Link>
                   </li>
                   <li className="menu__list">
-                    <Link to="#" className="menu__link no-cursor">
+                    <Link to="/contact" className="menu__link no-cursor">
                       Contact
                     </Link>
                   </li>

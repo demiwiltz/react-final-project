@@ -53,13 +53,13 @@ const Home = ({}) => {
             {/* <!-- BTN SHOWS --> */}
             <ul className="nav__links">
               <li className="nav__link">
-                <a href="#">Home</a>
+                <Link to="/">Home</Link>
               </li>
               <li className="nav__link">
-                <a href="#yourmovie">Find your movies</a>
+                <Link to="/movies">Find your movies</Link>
               </li>
               <li className="nav__link">
-                <a href="#contact">Contact</a>
+                <Link to="/contact">Contact</Link>
               </li>
             </ul>
           </div>

@@ -12,7 +12,7 @@ console.log(movie)
 
 
   return (
-    <section id="books__body">
+    <section id="movies__body">
       <main id="movies__main">
         <div className="movies__container">
           <div className="row">
