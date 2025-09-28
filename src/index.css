@@ -15,7 +15,7 @@ a {
 body {
     margin: 0; /* Remove default margin */
     height: 100vh; /* Full height of the viewport */
-    background-image: url('./assets/awol-vision-projector-Uff2iGkpNs4-unsplash.jpg');
+    /* background-image: url('./assets/awol-vision-projector-Uff2iGkpNs4-unsplash.jpg'); */
     background-size: cover; /* Cover the entire area */
     background-position: center; /* Center the image */
     background-repeat: no-repeat; /* Prevent repeating the image */ 
