@@ -3,13 +3,18 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { Link, useParams } from "react-router-dom";
 
+
+// fix the route on this movie info, the html content needs to show when you click find your movies on the nav bar
+// in order to fix the above problem I think you have to fix something w/the route in order for it to show
+// watch a video on how to fetch the id from the data david shows you and understand what he's doing don't skim thru it understand the code THEN apply it to yours
+
+
+
 const MovieInfo = ({ movies }) => {
 
 const { id } = useParams()
 const movie = movies.find(movie => movie.id === id); 
 console.log(movie)
-
-
 
   return (
     <section id="movies__body">

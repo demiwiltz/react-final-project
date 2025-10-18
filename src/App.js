@@ -2,8 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Home from './pages/Home';
 import MovieInfo from './pages/MovieInfo';
 import { movies } from './data'
-import Movie from './components/Movie';
-import Movies from './pages/Movies';
+import Contact from './pages/Contact';
 
 function App() {
   return (
@@ -11,8 +10,8 @@ function App() {
     <div className="App">
     <Routes>
       <Route path='/' element={<Home />} />
-      <Route path='/movies' element={<Movies movie={movies} />} />
       <Route path='/movies/:id' element={() => <MovieInfo movie={movies} />} />
+      <Route path='/contact' element={() => <Contact movie={movies} />} />
     </Routes>
     </div>
     </Router>
