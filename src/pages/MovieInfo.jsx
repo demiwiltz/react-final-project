@@ -9,12 +9,18 @@ import { Link, useParams } from "react-router-dom";
 // watch a video on how to fetch the id from the data david shows you and understand what he's doing don't skim thru it understand the code THEN apply it to yours
 
 
+// !!!!! FIX PROBLEM BELOW !!!!!!
+
+
+
+// PROBLEM: trying to get the movie variable to work when I click on a movie from the home page and when i click find your movies from the home page I need to create a loading state w/a message saying no movies found
+
 
 const MovieInfo = ({ movies }) => {
 
 const { id } = useParams()
-const movie = movies.find(movie => movie.id === id); 
-console.log(movie)
+const movie = movies.find(movie => movie.id === Number(id)); 
+console.log(movies)
 
   return (
     <section id="movies__body">

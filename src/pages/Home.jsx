@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import { render } from "@testing-library/react";
-import { movies } from "../data";
 import Movie from "../components/Movie";
 import { Link } from "react-router-dom";
 import MovieImg from "../assets/awol-vision-projector-Uff2iGkpNs4-unsplash.jpg";
@@ -55,7 +54,7 @@ const Home = ({}) => {
     
       try {
     const response = await axios.get(`https://www.omdbapi.com/?apikey=79bfa222&s=query=${setQuery}&sort=${setSortOrder}`)
-    setMovies(response.data)
+    setMovies(response.data.Search || [])
       } 
       catch {
   
