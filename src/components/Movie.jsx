@@ -18,7 +18,7 @@ const Movie = ({ movie }) => {
   return (
     <div className="">
       <div className="movie">
-        <Link to="/movies/:id">
+        <Link to={`/movies/${movie.imdbID}`}>
           <figure>
             <img
               className="movie__img"

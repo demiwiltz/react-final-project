@@ -10,7 +10,7 @@ import { Link, useParams } from "react-router-dom";
 
 
 // !!!!! FIX PROBLEM BELOW !!!!!!
-
+// The undefined value for your movie variable indicates that the find method is not locating a movie that matches the id from useParams().
 
 
 // PROBLEM: trying to get the movie variable to work when I click on a movie from the home page and when i click find your movies from the home page I need to create a loading state w/a message saying no movies found
@@ -19,8 +19,14 @@ import { Link, useParams } from "react-router-dom";
 const MovieInfo = ({ movies }) => {
 
 const { id } = useParams()
-const movie = movies.find(movie => movie.id === Number(id)); 
-console.log(movies)
+const movie = movies.find(movie => movie.id === id); 
+console.log(id)
+
+if (!movie) {
+  <p>Movie not found!</p>
+}
+
+
 
   return (
     <section id="movies__body">
