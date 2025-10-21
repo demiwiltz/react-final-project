@@ -10,17 +10,18 @@ import { Link, useParams } from "react-router-dom";
 
 
 // !!!!! FIX PROBLEM BELOW !!!!!!
-// The undefined value for your movie variable indicates that the find method is not locating a movie that matches the id from useParams().
 
 
 // PROBLEM: trying to get the movie variable to work when I click on a movie from the home page and when i click find your movies from the home page I need to create a loading state w/a message saying no movies found
+// still stuck but think the problem is w/my id in the api the imdbID that i'm using is basically console logging the string and NOT the movie information itself w/all the pictures and title etc. so need to find a way to get it to show the actual movie info from the data set
+
 
 
 const MovieInfo = ({ movies }) => {
 
-const { id } = useParams()
-const movie = movies.find(movie => movie.id === id); 
-console.log(id)
+const { imdbID } = useParams()
+const movie = movies.find(movie => movie.imdbID === imdbID); 
+console.log(imdbID)
 
 if (!movie) {
   <p>Movie not found!</p>

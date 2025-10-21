@@ -179,7 +179,7 @@ fetchMovies()
               <div className="page__list">page 1 of 3</div> */}
             </div>
           </div>
-
+  
           {/* <div className="movies movies__loading">
             <i className="fas fa-spinner movies__loading--spinner"></i>
           </div> */}
@@ -189,7 +189,8 @@ fetchMovies()
             ) : sortedMovies.length > 0 ? (
               sortedMovies
                 .slice(0, 6)
-                .map((movie) => <Movie key={movie.imdbID} movie={movie} />)
+                .map((movie) => 
+                 <Movie key={movie.imdbID} movie={movie} />)   
             ) : (
               <p>No movies found</p>
             )}
