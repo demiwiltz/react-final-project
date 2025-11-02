@@ -126,7 +126,7 @@ fetchMovies()
               </div>
             </div>
             <div className="content-wrapper">
-              <h2>Browse our movies</h2>
+              <h2 className="nav__movie">Browse our movies</h2>
               <div className="input-wrap">
                 <input
                   type="text"
@@ -167,22 +167,10 @@ fetchMovies()
                 <option value="oldest">Old to New</option>
                 <option value="newest">New to Old</option>
               </select>
-              {/* <div className="pages">Pages</div>
-              <div className="button__container">
-                <i>
-                  <FontAwesomeIcon icon="fa-solid fa-chevron-left" />
-                </i>
-                <i>
-                  <FontAwesomeIcon icon="fa-solid fa-chevron-right" />
-                </i>
-              </div>
-              <div className="page__list">page 1 of 3</div> */}
             </div>
           </div>
   
-          {/* <div className="movies movies__loading">
-            <i className="fas fa-spinner movies__loading--spinner"></i>
-          </div> */}
+          
           <div className="movies">
             {loading ? (
               <i className="fas fa-spinner movies__loading--spinner"></i>

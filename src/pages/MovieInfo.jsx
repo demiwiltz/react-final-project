@@ -22,8 +22,9 @@ const MovieInfo = ({ movies }) => {
     <p>Movie not found!</p>;
   }
 
+// https://www.omdbapi.com/?apikey=79bfa222&i=tt0232500 THIS IS THE ID API URL
 
-  // invalid api key, it's something i'm doing wrong using the api url incorrectly i'm not using it right NEED assistance
+  // need to make everything dynamic on this page 
   const [loading, setLoading] = useState(false);
   const [movieOne, setMovieOne] = useState(null);
 
@@ -31,8 +32,7 @@ const MovieInfo = ({ movies }) => {
     const fetchMovie = async () => {
       try {
         const response = await axios.get(
-          `https://omdbapi.com/?i=${imdbID}&apikey=$79bfa222`,
-          console.log(response, response.data)
+          `https://omdbapi.com/?i=${imdbID}&apikey=79bfa222`,
         );
         setMovieOne(response);
       } catch (error) {
@@ -58,24 +58,20 @@ const MovieInfo = ({ movies }) => {
                   <h2 className="movie__selected--title--top">Movies</h2>
                 </Link>
               </div>
-              <div className="movie">
-                {loading ? (
-                  <h1>Loading...</h1>
-                ) : (
-                  <>
-                    <h1>{movies.Title}</h1>
-                    <img src={movies.Poster} alt={movies.Title} />
-                    <div className="movie__info">
-                      <div className="movie__description">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing
-                        elit. Distinctio magnam voluptate, sapiente dolore
-                        similique harum? Animi tenetur veritatis quis, enim
-                        dolore repellat, aliquam provident, hic nisi architecto
-                        in? Odio, iure!
-                      </div>
-                    </div>
-                  </>
-                )}
+              <div className="movie__selected">
+                <figure className="movie__selected--figure">
+                  <img src="https://m.media-amazon.com/images/M/MV5BZTVkZWY5MmItYjY3OS00OWY3LTg2NWEtOWE1NmQ4NGMwZGNlXkEyXkFqcGc@._V1_SX300.jpg" alt="" className="movie__selected--img"/>
+                </figure>
+                <div className="movie__selected--description">
+                  <h2 className="movie__selected--title">Transformers Rise Of The Beasts</h2>
+                  <div className="movie__selected--year">2024</div>
+                  <h6 className="movie__rating">PG</h6>
+                  <div className="movie__runtime"><h6 className="movie__category">Runtime:</h6> 106 min</div>
+                  <h6 className="movie__genre"> <h6 className="movie__category">Genre:</h6> Action, Crime, Thriller</h6>
+                  <div className="movie__plot"> <h6 className="movie__plot--title">Plot:</h6>
+                    <p className="movie__para">Los Angeles police officer Brian O'Conner must decide where his loyalty really lies when he becomes enamored with the street racing world he has been sent undercover to end it.</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

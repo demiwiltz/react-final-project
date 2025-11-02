@@ -12,14 +12,7 @@ a {
     font-size: 20px;
 }
 
-body {
-    margin: 0; /* Remove default margin */
-    height: 100vh; /* Full height of the viewport */
-    /* background-image: url('./assets/awol-vision-projector-Uff2iGkpNs4-unsplash.jpg'); */
-    background-size: cover; /* Cover the entire area */
-    background-position: center; /* Center the image */
-    background-repeat: no-repeat; /* Prevent repeating the image */ 
-}
+
 
 li {
     list-style-type: none;
@@ -30,7 +23,7 @@ h4 {
     max-width: 1000px;
     /* font-weight: 500; */
     font-size: 20px;
-    color: #fff;   
+    /* color: #fff;    */
 }
 
 h1 {
@@ -42,14 +35,11 @@ h1 {
 }
 
 h2 {
-    margin-bottom: 40px;
-    text-align: center;
-    letter-spacing: .1em;
-    font-size: 45px;
-    max-width: 1000px;
-    font-weight: 500;
-    color: #fff;
+    font-size: 30px;
+    /* font-weight: 500; */
+    color: #242424;
 }   
+
 
 
 h3 {
@@ -119,6 +109,18 @@ margin: 20px 20px;
 width: 100%;
 max-width: 430px;
 }
+
+.nav__movie {
+    margin-bottom: 40px;
+    text-align: center;
+    letter-spacing: .1em;
+    font-size: 45px;
+    max-width: 1000px;
+    font-weight: 500;
+    color: #fff;
+}
+
+
 
 .nav__row {
 
@@ -473,6 +475,76 @@ overflow: hidden;
         transform: rotate(360deg);
     }
 }
+
+/* MOVIE INFO */
+
+.movie__selected--title--top {
+    margin-left: 10px;
+    margin-bottom: 0;
+}
+
+.movie__selected--title--top:hover {
+    text-decoration: underline;
+}
+
+.movie__selected--top {
+    display: flex;
+    align-items: center;
+    margin: 16px;
+}
+
+.fa-arrow-left {
+  font-size: 30px;
+}
+
+.movie__selected--figure {
+    width: 40%;
+  padding: 16px 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.movie__selected--title {
+    margin-bottom: 8px;
+}
+
+.movie__selected {
+    display: flex;
+}
+
+.movie__selected--year {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 16px;
+}
+
+.movie__rating {
+    font-size: 20px;
+    font-weight: 700;
+    padding-bottom: 16px;
+}
+
+.movie__genre {
+  padding: 16px 0;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.movie__plot--title {
+    font-size: 16px;
+}
+
+.movie__runtime {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.movie__category {
+    font-size: 16px;
+}
+
+
 
 @media (max-width: 550px) {
  .nav__links {
