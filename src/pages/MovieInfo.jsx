@@ -2,48 +2,53 @@ import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import Spinner from "../components/Spinner";
 import axios from "axios";
 
-// fix the route on this movie info, the html content needs to show when you click find your movies on the nav bar
-// in order to fix the above problem I think you have to fix something w/the route in order for it to show
-// watch a video on how to fetch the id from the data david shows you and understand what he's doing don't skim thru it understand the code THEN apply it to yours
-
-// !!!!! FIX PROBLEM BELOW !!!!!!
-
-// PROBLEM: trying to get the movie variable to work when I click on a movie from the home page and when i click find your movies from the home page I need to create a loading state w/a message saying no movies found
-// still stuck but think the problem is w/my id in the api the imdbID that i'm using is basically console logging the string and NOT the movie information itself w/all the pictures and title etc. so need to find a way to get it to show the actual movie info from the data set
+// create contact page
 
 const MovieInfo = ({ movies }) => {
   const { imdbID } = useParams();
-  const movie = movies.find((movie) => movie.imdbID === imdbID);
+  const movie = movies.find((movie) => +movie.imdbID === +imdbID);
   console.log(imdbID);
 
-  if (!movie) {
-    <p>Movie not found!</p>;
-  }
 
-// https://www.omdbapi.com/?apikey=79bfa222&i=tt0232500 THIS IS THE ID API URL
 
-  // need to make everything dynamic on this page 
+  // https://www.omdbapi.com/?apikey=79bfa222&i=tt0232500 THIS IS THE ID API URL
+
   const [loading, setLoading] = useState(false);
   const [movieOne, setMovieOne] = useState(null);
+  const [isPopupVisible, setIsPopupVisible] = useState(false);
 
   useEffect(() => {
     const fetchMovie = async () => {
+      setLoading(true);
       try {
         const response = await axios.get(
-          `https://omdbapi.com/?i=${imdbID}&apikey=79bfa222`,
+          `https://omdbapi.com/?apikey=79bfa222&i=${imdbID}`
         );
-        setMovieOne(response);
+        setMovieOne(response.data);
       } catch (error) {
         console.log("Error fetching movie", error);
       } finally {
-        setLoading(false);
+        setTimeout(() => {
+          setLoading(false); // End loading after a delay
+        }, 3000); // Adjust the delay time (in milliseconds) as needed
       }
     };
     fetchMovie();
   }, [imdbID]);
-  
+
+  const handleButtonClick = () => {
+    setIsPopupVisible(true);
+  };
+
+  const closePopup = () => {
+    setIsPopupVisible(false);
+  };
+
+
+
   return (
     <>
       <section id="movies__body">
@@ -59,19 +64,60 @@ const MovieInfo = ({ movies }) => {
                 </Link>
               </div>
               <div className="movie__selected">
-                <figure className="movie__selected--figure">
-                  <img src="https://m.media-amazon.com/images/M/MV5BZTVkZWY5MmItYjY3OS00OWY3LTg2NWEtOWE1NmQ4NGMwZGNlXkEyXkFqcGc@._V1_SX300.jpg" alt="" className="movie__selected--img"/>
-                </figure>
-                <div className="movie__selected--description">
-                  <h2 className="movie__selected--title">Transformers Rise Of The Beasts</h2>
-                  <div className="movie__selected--year">2024</div>
-                  <h6 className="movie__rating">PG</h6>
-                  <div className="movie__runtime"><h6 className="movie__category">Runtime:</h6> 106 min</div>
-                  <h6 className="movie__genre"> <h6 className="movie__category">Genre:</h6> Action, Crime, Thriller</h6>
-                  <div className="movie__plot"> <h6 className="movie__plot--title">Plot:</h6>
-                    <p className="movie__para">Los Angeles police officer Brian O'Conner must decide where his loyalty really lies when he becomes enamored with the street racing world he has been sent undercover to end it.</p>
-                  </div>
-                </div>
+                {loading ? (
+                  <Spinner /> // Show spinner while loading
+                ) : movieOne ? (
+                  <>
+                    <figure className="movie__selected--figure">
+                      <img
+                        src={movieOne.Poster}
+                        alt=""
+                        className="movie__selected--img"
+                      />
+                    </figure>
+                    <div className="movie__selected--description">
+                      <h2 className="movie__selected--title">
+                        {movieOne.Title}
+                      </h2>
+                      <div className="movie__selected--year">
+                        {movieOne.Year}
+                      </div>
+                      <h6 className="movie__rating">{movieOne.Rated}</h6>
+                      <div className="movie__runtime">
+                        <h6 className="movie__category">Runtime:</h6>
+                        {movieOne.Runtime}
+                      </div>
+                      <div className="movie__genre">
+                        {" "}
+                        <h6 className="movie__category">Genre:</h6>
+                        {movieOne.Genre}
+                      </div>
+                      <div className="movie__plot">
+                        {" "}
+                        <h6 className="movie__plot--title">Plot:</h6>
+                        <p className="movie__para">{movieOne.Plot}</p>
+                      </div>
+                      <button
+                        className="movie__selected--btn"
+                        onClick={handleButtonClick}
+                      >
+                        Watch Now
+                      </button>
+                      {isPopupVisible && (
+                        <div
+                          className={`popup ${isPopupVisible ? "show" : ""}`}
+                        >
+                          <div className="popup-content">
+                          <p>Sorry, page not available.</p>
+                          <button className="close" onClick={closePopup}>Close</button>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  </>
+                ) : (
+                  <p>No movies found.</p>
+                )}
               </div>
             </div>
           </div>

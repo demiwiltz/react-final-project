@@ -6,7 +6,6 @@ import Movie from "../components/Movie";
 import { Link } from "react-router-dom";
 import MovieImg from "../assets/awol-vision-projector-Uff2iGkpNs4-unsplash.jpg";
 
-// the find your movies page will be the movie id where you'll fetch the id from the data that you searched on home page
 
 const Home = ({}) => {
   function openMenu() {
@@ -48,20 +47,20 @@ const Home = ({}) => {
     return 0;
   });
 
-  useEffect(() => {
-    const fetchMovies = async () => {
-      setLoading(true);
+//   useEffect(() => {
+//     const fetchMovies = async () => {
+//       setLoading(true);
     
-      try {
-    const response = await axios.get(`https://www.omdbapi.com/?apikey=79bfa222&s=query=${setQuery}&sort=${setSortOrder}`)
-    setMovies(response.data.Search || [])
-      } 
-      catch {
+//       try {
+//     const response = await axios.get(`https://www.omdbapi.com/?apikey=79bfa222&s=query=${setQuery}&sort=${setSortOrder}`)
+//     setMovies(response.data.Search || [])
+//       } 
+//       catch {
   
-      }
-    }
-fetchMovies()
-}, [setQuery, setSortOrder])
+//       }
+//     }
+// fetchMovies()
+// }, [setQuery, setSortOrder])
 
 
 
@@ -90,7 +89,7 @@ fetchMovies()
                   <Link to="/">Home</Link>
                 </li>
                 <li className="nav__link">
-                  <Link to="/movies/:id">Find your movies</Link>
+                  <Link to="/movies/:id">Movies</Link>
                 </li>
                 <li className="nav__link">
                   <Link to="/contact">Contact</Link>
@@ -114,7 +113,7 @@ fetchMovies()
                   </li>
                   <li className="menu__list">
                     <Link to="/movies" className="menu__link no-cursor">
-                      Find your movies
+                      Movies
                     </Link>
                   </li>
                   <li className="menu__list">
@@ -170,7 +169,11 @@ fetchMovies()
             </div>
           </div>
   
-          
+{/* OPTION: Hardcode 6 random movies and display them replacing the loading state then have a message at the top saying something like "Feel free to browse through our selection or search for a movie you like using the above search tab"  */}
+
+
+
+          {/* PLEASE SEARCH FOR A MOVIE USING THE SEARCH TAB ABOVE */}
           <div className="movies">
             {loading ? (
               <i className="fas fa-spinner movies__loading--spinner"></i>
